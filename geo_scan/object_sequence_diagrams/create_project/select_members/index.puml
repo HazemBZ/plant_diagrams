@@ -1,0 +1,33 @@
+@startuml Project creation index
+actor       User       as user
+boundary    CreateNewUserForm    as form
+boundary    SelectProjectMembersList as members
+boundary    CreateProjectForm    as b_project
+control     UserController     as c_user
+entity      User    as e_user
+  
+mainframe **Select project members**
+
+user -> form : fillInputs(projectname,...)
+
+loop
+    alt create new user
+        user -> form: fillForm
+        user -> form: click create
+        form -> c_user: addNemMember(firstName, lastName, \nusername, email, role, number)
+        c_user ->   e_user: createNewUser(...)
+        e_user -->  c_user: UserCreated
+        c_user -->  form: UserCreated
+        form --> form: empty form
+    else select project members
+        user -> members: select/unSelectMember
+    end
+end
+
+alt SaveSelectedMembers
+    user -> members: clickConfirm
+    members -> b_project: saveSelectMembers
+    b_project --> b_project : saveSelectedMembers
+else DiscardSelectedMembers
+    user -> members: clickDecline
+end

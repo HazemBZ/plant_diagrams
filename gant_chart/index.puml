@@ -1,0 +1,31 @@
+@startuml geoscan gant
+printscale weekly
+
+
+Project starts 2022-05-07
+
+
+
+
+[Onboarding] as [T1] lasts 7 days
+then [Sprint 1] as [S1]  lasts 53 days
+[S1 end] happens at [Sprint 1]'s end
+[Sprint 2] as [S2] lasts 60 days
+[S2] starts at [S1]'s end
+
+
+
+[T1] is colored in Lavender/LightBlue
+
+
+
+' [T1]->[S1]
+' Milestones 
+' 
+' [S1]->[S2]
+
+
+
+
+@enduml
+
