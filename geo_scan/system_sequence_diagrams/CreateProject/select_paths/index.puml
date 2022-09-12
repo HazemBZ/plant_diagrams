@@ -1,0 +1,40 @@
+@startuml Project creation index
+actor       User       as user
+' boundary    NavigationWidget    as system
+' boundary    NativeFodlerSelector    as system
+' boundary    CreateProjectForm    as system
+' boundary    Browser    as system
+' control     FoldersNavigator     as system
+' control     FileUploadHandler    as system
+participant Geoscan as system
+  
+mainframe **Select data source paths**
+
+alt Select folder path from server
+    loop
+        user -> system: selectDirectory
+        system -> system:   getFolderContent(selectedDir)
+        system --> system:  folderContent
+        system --> system:  showFolderContent
+    end
+    alt confirm
+        user -> system: Click confirm
+        system --> system: Add to selected paths
+    else decline
+        user -> system: Click discard
+    end
+else Upload folder from current local machine
+    loop
+        user -> system: selectFolder
+        system --> system: showFolderContent(newFolder)
+    end
+    user        ->  system: Click upload
+    system   ->  system: Asks upload confirmation
+    user        ->  system: Click confirm
+    system   ->  system : uploadFiles(folderContent)
+    system --> system: uploadPath
+    system --> system: Add to selected paths
+    note left
+        folder file content are looked up recursively
+    end note
+end

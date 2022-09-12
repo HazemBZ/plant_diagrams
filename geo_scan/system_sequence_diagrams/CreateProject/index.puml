@@ -1,0 +1,46 @@
+@startuml Project creation index
+' participant Participant as participan
+actor       User       as user
+' boundary    Creatsystemsystem    as system
+' control     ProjectController     as system
+' entity      Project      as system
+' entity      ProjectUserRelationship      as system
+participant Geoscan as system
+  
+mainframe **Create new project**
+
+user -> system : fillInputs(projectname,...)
+
+loop
+    ref over user, system
+        Select data source paths
+    end ref
+    
+    opt
+        user -> system : removePath
+    end
+end
+
+
+loop
+    ref over user, system
+        Select project members
+    end ref
+
+    opt 
+        user -> system : removeMember
+    end 
+end
+
+alt create project
+    user -> system: createProject
+    
+    system -> system: createNewMembers
+    system -> system: createProject
+else discard 
+    user -> system: discardProject
+end 
+
+system -> system: redirectProjectsList\nPage
+
+@enduml

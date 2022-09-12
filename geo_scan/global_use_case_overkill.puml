@@ -1,0 +1,80 @@
+@startuml global use case diagram
+left to right direction
+
+skinparam nodesep 20
+skinparam ranksep 180
+
+actor "User" as u
+usecase "Create project" as uc10
+
+usecase "Manage project details" as uc20
+
+'usecase "Manage project members" as uc30
+usecase "Add project members" as 31
+usecase "Update project members role" as 32
+
+'usecase "Manage project tasks" as uc40
+usecase "Add new project task" as uc41
+usecase "Update project task status" as uc42
+usecase "Archive project task" as uc43
+usecase "Delete project task" as uc44
+
+usecase "Access project data statistics" as uc50
+
+'usecase "Manage project data" as uc60
+usecase "Scan project data" as uc61
+usecase "Remove project data" as uc62
+
+usecase "Access project shared data" as uc70
+
+'usecase "Map geo data" as uc80
+usecase "Access well markers on worldmap" as uc81
+usecase "Navigate to Trackviewer with selected wells" as uc82
+
+usecase "Access geofiles list" as uc90
+
+'usecase "Manage geofile details" as uc100
+usecase "Verify a geofile" as uc101
+usecase "Bookmark geofile" as uc102
+usecase "Copy geofile path to clipboard" as uc103
+usecase "Plot geofile curves on a data viewer" as uc104
+usecase "Update geodata file informations" as uc105
+
+usecase "Access project user activities" as uc110
+
+'usecase "Manage a project" as uc120
+usecase "Update a project's color indicator" as uc121
+usecase "Delete a project" as uc122
+
+
+u -- uc10
+u -- uc20
+'u -- uc30
+u -- 31
+u -- 32
+'u -- uc40
+u -- uc41
+u -- uc42
+u -- uc43
+u -- uc44
+u -- uc50
+'u -- uc60
+u -- uc61
+u -- uc62
+u -- uc70
+'u -- uc80
+u -- uc81
+u -- uc82
+u -- uc90
+u -- uc101
+u -- uc102
+u -- uc103
+u -- uc104
+u -- uc105
+'u -- uc100
+u -- uc110
+'u -- uc120
+u -- uc121
+u -- uc122
+
+@enduml

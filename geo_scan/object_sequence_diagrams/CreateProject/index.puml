@@ -1,0 +1,49 @@
+@startuml Project creation index
+' participant Participant as participan
+actor       User       as user
+boundary    CreateProjectForm    as form
+control     ProjectController     as cproject
+entity      Project      as eproject
+entity      ProjectUserRelationship      as eprojectuser
+  
+  
+mainframe **Create new project**
+
+user -> form : fillInputs(projectname,...)
+
+loop
+    ref over user, form
+        Select data source paths
+    end ref
+    
+    opt
+        user -> form : removePath
+    end
+end
+
+
+loop
+    ref over user, form
+        Select project members
+    end ref
+
+    opt 
+        user -> form : removeMember
+    end 
+end
+
+alt create project
+    user -> form: createProject
+    form -> cproject: createProject
+    
+    cproject -> eprojectuser: createNewMembers
+    eprojectuser --> cproject: success
+    cproject -> eproject: createProject
+    eproject --> cproject: success
+else discard 
+    user -> form: discardProject
+end 
+
+form -> form: redirectProjectsList\nPage
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml Project creation index
+actor       User       as user
+' boundary    CreateNewUsersystem    as system
+' boundary    SelectProjectsystemList as system
+' boundary    CreateProjectsystem    as system
+' control     UserController     as system
+' entity      User    as system
+participant Geoscan as system
+  
+mainframe **Select project members**
+
+user -> system : fillInputs(projectname,...)
+
+loop
+    alt create new user
+        user -> system: fillForm
+        user -> system: click create
+        system -> system: addNemMember(firstName, lastName, \nusername, email, role, number)
+        system ->   system: createNewUser(...)
+        system --> system: empty up form
+    else select project system
+        user -> system: select/unSelectMember
+    end
+end
+
+alt SaveSelectedsystem
+    user -> system: clickConfirm
+    system -> system: saveSelectMembers
+    system --> system : saveSelectedMembers
+else DiscardSelectedsystem
+    user -> system: clickDecline
+end
