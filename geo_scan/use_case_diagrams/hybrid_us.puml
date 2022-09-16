@@ -1,0 +1,182 @@
+@startuml global use case diagram
+left to right direction
+
+skinparam nodesep 20
+skinparam ranksep 180
+
+actor "User" as u
+usecase  "Create project" as uc10
+usecase  "Select data source" as uc11
+usecase  "Select folder from server" as uc12
+usecase  "Upload folder from machine" as uc13
+usecase  "Select project members" as uc14
+
+
+usecase "Update project details" as uc20
+
+'usecase "Manage project members" as uc30
+usecase "Add project members" as 31
+usecase "Update project members role" as 32
+
+'usecase "Manage project tasks" as uc40
+usecase "Add new project task" as uc41
+usecase "Update project task status" as uc42
+usecase "Archive project task" as uc43
+usecase "Delete project task" as uc44
+
+usecase "Access project data statistics" as uc50
+
+'usecase "Manage project data" as uc60
+usecase "Scan project data" as uc61
+usecase "Remove project data" as uc62
+
+usecase "Access project shared data" as uc70
+
+'usecase "Map geo data" as uc80
+usecase "Access well markers on worldmap" as uc81
+usecase "Navigate to Trackviewer with selected wells" as uc82
+
+usecase "Access geofiles list" as uc90
+
+'usecase "Manage geofile details" as uc100
+usecase "Verify a geofile" as uc101
+usecase "Bookmark a geofile" as uc102
+usecase "Copy geofile path to clipboard" as uc103
+usecase "Plot geofile curves on a data viewer" as uc104
+usecase "Update geodata file informations" as uc105
+
+usecase "Access project user activities" as uc110
+
+'usecase "Manage a project" as uc120
+usecase "Update a project's color indicator" as uc121
+usecase "Delete a project" as uc122
+
+
+u -- uc10
+uc10 ..> uc11
+uc11 <|-- uc13
+uc11 <|-- uc12
+uc10 ..> uc14
+
+u -- uc20
+'u -- uc30
+u -- 31
+u -- 32
+'u -- uc40
+u -- uc41
+u -- uc42
+u -- uc43
+u -- uc44
+u -- uc50
+'u -- uc60
+u -- uc61
+u -- uc62
+u -- uc70
+'u -- uc80
+u -- uc81
+u -- uc82
+u -- uc90
+u -- uc101
+u -- uc102
+u -- uc103
+u -- uc104
+u -- uc105
+'u -- uc100
+u -- uc110
+'u -- uc120
+u -- uc121
+u -- uc122
+
+
+@enduml
+
+''' uc2
+
+' @startuml global use case diagram2
+' left to right direction
+
+' skinparam nodesep 20
+' skinparam ranksep 180
+
+' actor "User" as u
+
+
+
+' usecase  "Create project" as uc30
+' usecase  "Select data source" as uc31
+' usecase  "Select folder from server" as uc32
+' usecase  "Upload folder from machine" as uc33
+' usecase  "Select project members" as uc34
+
+
+' usecase  "Manage data " as uc40
+' usecase  "Scan data " as uc41
+' usecase  "Clear data " as uc42
+
+
+' usecase  "Manage geofile " as uc50
+' usecase  "Plot geofile " as uc55
+
+' usecase  "Map geodata" as uc60
+
+' usecase  "Manage project" as uc80
+
+
+' usecase  "Manage project details" as uc90
+
+
+' usecase  "Manage project members" as uc100
+
+
+' usecase  "Manage project tasks" as uc110
+
+
+
+
+
+' u -- uc30
+' uc30 ..> uc31
+' uc31 <|-- uc33
+' uc31 <|-- uc32
+' uc30 ..> uc34
+
+
+
+
+' u -- uc40
+
+
+' u -- uc50
+
+
+' u -- uc55
+
+
+' u -- uc60
+
+
+' u -- uc80
+
+
+' u -- uc90
+
+
+' @enduml
+
+
+' EXTEND
+' @startuml
+' :Main Admin: as Admin
+' (Use the application) as (Use)
+
+' User <|-- Admin
+' (Start) <|-- (Use)
+
+' @enduml
+
+' INCLUDES ARROW
+' @startuml
+' (Use case 1) <.. :user:
+' (Use case 2) <- :user:
+' @enduml
+

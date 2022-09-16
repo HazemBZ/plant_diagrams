@@ -1,0 +1,81 @@
+@startuml global use case diagram
+left to right direction
+
+skinparam nodesep 20
+skinparam ranksep 60
+
+actor "Manager" as u
+actor "Viewer" as u2
+
+skinparam rectangle {
+    Padding 120
+}
+
+
+rectangle Geoscan {
+    usecase  "Create project" as uc30
+
+
+    usecase  "Manage geodata " as uc40
+    usecase  "Access geodata " as uc45
+
+
+    usecase  "Manage geofiles" as uc50
+    usecase  "Access geofiles" as uc55
+
+
+    usecase  "Map geodata" as uc60
+
+
+    usecase  "Manage projects list" as uc70
+    usecase  "Access projects list" as uc75
+
+
+    usecase  "Manage a project" as uc80
+    usecase  "Access a project" as uc85
+
+    usecase "Authentication" as auth
+}
+
+u -left-|> u2
+
+
+u2 -- uc45
+u2 -- uc55
+u2 -- uc75
+u2 -- uc85
+
+
+
+
+u -- uc30
+
+
+u -- uc40
+
+
+u -- uc50
+
+
+u -- uc60
+
+
+u -- uc70
+
+
+u -- uc80
+
+
+
+uc45 ..> auth
+uc55 ..> auth
+uc75 ..> auth
+uc85 ..> auth
+uc30 ..> auth
+uc40 ..> auth
+uc50 ..> auth
+uc60 ..> auth
+uc70 ..> auth
+uc80 ..> auth
+
+@enduml

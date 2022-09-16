@@ -9,22 +9,46 @@ actor "User" as u
 
 
 usecase  "Create project" as uc30
+usecase  "Select data source" as uc31
+usecase  "Select folder from server" as uc32
+usecase  "Upload folder from machine" as uc33
+usecase  "Select project members" as uc34
 
 
+usecase  "Manage data " as uc40
+usecase  "Scan data " as uc41
+usecase  "Clear data " as uc42
 
-usecase  "Manage geodata " as uc40
+
+usecase  "Manage geofile " as uc50
+usecase  "Plot geofile " as uc55
 
 usecase  "Map geodata" as uc60
 
 usecase  "Manage project" as uc80
 
 
+usecase  "Manage project details" as uc90
+
+
 
 
 u -- uc30
+uc30 ..> uc31
+uc31 <|-- uc33
+uc31 <|-- uc32
+uc30 ..> uc34
+
+
 
 
 u -- uc40
+
+
+u -- uc50
+
+
+u -- uc55
 
 
 u -- uc60
@@ -33,6 +57,7 @@ u -- uc60
 u -- uc80
 
 
+u -- uc90
 
 
 @enduml
