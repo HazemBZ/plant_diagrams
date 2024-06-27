@@ -13,3 +13,5 @@ a.out
 
 
 *.png
+
+!assets/*.png
