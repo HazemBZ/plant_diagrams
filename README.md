@@ -1,6 +1,7 @@
 ## About
 
-UML Diagrams from code using [plant uml](https://plantuml.com/).
+UML Diagrams generated from code using [plant uml](https://plantuml.com/).
+Because why not!
 
 ## Overview
 
